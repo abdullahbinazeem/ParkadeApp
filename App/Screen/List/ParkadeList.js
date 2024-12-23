@@ -2,7 +2,7 @@ import { FlatList } from "react-native";
 import React from "react";
 import ParkadeCard from "./ParkadeCard";
 
-import { fetchParkadeInfo } from "../../util/http";
+import { fetchParkadeInfo } from "../../../util/http";
 import { useEffect, useState } from "react";
 
 const ParkadeList = () => {

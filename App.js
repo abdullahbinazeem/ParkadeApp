@@ -6,7 +6,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { StatusBar } from "expo-status-bar";
-import ParkadeList from "./App/Screen/ParkadeList";
+import ParkadeList from "./App/Screen/List/ParkadeList";
+import ParkadeMap from "./App/Screen/Map/ParkadeMap";
 
 const Tab = createBottomTabNavigator();
 
@@ -44,7 +45,7 @@ export default function App() {
           })}
         >
           <Tab.Screen name="List View" component={ParkadeList} />
-          <Tab.Screen name="Map View" component={ParkadeList} />
+          <Tab.Screen name="Map View" component={ParkadeMap} />
         </Tab.Navigator>
       </NavigationContainer>
     </View>
