@@ -1,9 +1,10 @@
-import { FlatList } from "react-native";
-import React from "react";
+import { useEffect, useState } from "react";
+import { FlatList, View, Text } from "react-native";
 import ParkadeCard from "./ParkadeCard";
 
 import { fetchParkadeInfo } from "../../../util/http";
-import { useEffect, useState } from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
 const ParkadeList = () => {
   const [parkadeInfo, setParkadeInfo] = useState([]);
@@ -17,16 +18,27 @@ const ParkadeList = () => {
   }, []);
 
   return (
-    <FlatList
-      data={parkadeInfo}
-      renderItem={({ item }) => <ParkadeCard item={item} />}
-      keyExtractor={(item) => item.id}
-      contentContainerStyle={{
-        flexGrow: 1,
-        justifyContent: "center",
-        backgroundColor: "white",
-      }}
-    />
+    <GestureHandlerRootView className="mb-16">
+      <BottomSheetModalProvider>
+        <FlatList
+          data={parkadeInfo}
+          renderItem={({ item, index }) => (
+            <ParkadeCard item={item} index={index} />
+          )}
+          keyExtractor={(item) => item.id}
+          ListHeaderComponent={
+            <Text style={{ fontSize: 24, marginVertical: 10 }}>
+              Parking Nearby
+            </Text>
+          }
+          contentContainerStyle={{
+            flexGrow: 1,
+            justifyContent: "center",
+            backgroundColor: "white",
+          }}
+        />
+      </BottomSheetModalProvider>
+    </GestureHandlerRootView>
   );
 };
 

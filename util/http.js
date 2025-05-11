@@ -9,7 +9,7 @@ export const fetchParkadeInfo = async () => {
   const parkadeInfo = [];
 
   response.data.map((parkade, i) => {
-    const expenseObj = {
+    const parkadeObj = {
       id: i,
       name: parkade.name,
       occupied: parkade.occupied,
@@ -29,7 +29,7 @@ export const fetchParkadeInfo = async () => {
       }),
     };
 
-    parkadeInfo.push(expenseObj);
+    parkadeInfo.push(parkadeObj);
   });
 
   return parkadeInfo;
